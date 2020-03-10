@@ -7,3 +7,16 @@ I just wanted to know how Gatsby and graphQL capability will be able to perform 
 3. Change the data structure using graphQL;
 
 More importantly, this experiment pretends to understand the difference in performance between Gatsby & graphQL when compared to react & axios as well as get a better sense for the code required to implement both solutions
+
+## How to use
+
+If you want to test this, you would need to do a couple of things: 
+- Get a Airtable account and use a base that you want to test. The table header needs to be `Name`; 
+- Create `.env.development` file where you store your API and ID key;
+- Install `gatsby-cli` on your machine
+
+After that you would need to fork this repo so that you can use it and: 
+- `yarn install` or `npm install`
+- `gatsby-develop` or `npm run dev`
+
+
