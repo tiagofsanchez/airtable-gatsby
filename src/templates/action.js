@@ -13,13 +13,14 @@ const action = ({ data }) => {
 
 export const actionData = graphql`
   query actionData($slug: String) {
-    airtable(data: { Name: { eq: $slug } }) {
+    airtable(data: { slug: { eq: $slug } }) {
       data {
         Complete_
         Name
         Notes
         Relevant_Resources
         When_
+        slug
       }
     }
   }

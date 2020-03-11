@@ -26,11 +26,6 @@ class IndexPage extends Component {
     const onboardingTasks = this.props.data.allAirtable.nodes
     const { query } = this.state
 
-    console.log(this.props)
-
-    console.log(this.state)
-    console.log(onboardingTasks)
-
     const filteredTasks =
       query === ""
         ? onboardingTasks
@@ -66,7 +61,7 @@ class IndexPage extends Component {
           return (
             <Link
               key={task.id}
-              to={`/${task.data.Name}`}
+              to={`/${task.data.slug}`}
               style={{textDecoration: `none`, color: `gray`}}
             >
               <div  style={{
@@ -91,6 +86,7 @@ export const actionList = graphql`
       nodes {
         data {
           Name
+          slug
         }
       }
     }

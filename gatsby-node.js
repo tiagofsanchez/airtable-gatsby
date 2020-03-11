@@ -5,7 +5,7 @@ exports.createPages = async function({ actions, graphql }) {
         edges {
           node {
             data {
-              Name
+              slug
             }
           }
         }
@@ -13,7 +13,7 @@ exports.createPages = async function({ actions, graphql }) {
     }
   `)
   data.allAirtable.edges.forEach(edge => {
-    const slug = edge.node.data.Name
+    const slug = edge.node.data.slug
     actions.createPage({
       path: slug,
       component: require.resolve(`./src/templates/action.js`),
