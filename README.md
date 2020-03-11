@@ -20,3 +20,8 @@ After that you would need to fork this repo so that you can use it and:
 - `gatsby-develop` or `npm run dev`
 
 
+## Commits to follow: 
+
+- commit with the Airtable connected to Gatsby: [here](https://github.com/tiagofsanchez/airtable-gatsby/tree/70c1d5c35c423a0698be5190ea76bd961ed37d7c)
+- commit with the search working using JavaScript: [here](https://github.com/tiagofsanchez/airtable-gatsby/commit/52072471b48f11fb1e79338e6fb06536d099848b)
+- commit that has got the 

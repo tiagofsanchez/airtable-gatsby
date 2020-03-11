@@ -64,16 +64,19 @@ class IndexPage extends Component {
         />
         {filteredTasks.map(task => {
           return (
-            <div
-              style={{
+            <Link
+              key={task.id}
+              to={`/${task.data.Name}`}
+              style={{textDecoration: `none`, color: `gray`}}
+            >
+              <div  style={{
                 padding: `10px`,
                 border: `1px solid gray`,
                 marginBottom: `10px`,
-              }}
-              key={task.id}
-            >
+              }}>
               {task.data.Name}
-            </div>
+              </div>
+            </Link>
           )
         })}
         <Link to="/page-2/">Go to page 2</Link>
