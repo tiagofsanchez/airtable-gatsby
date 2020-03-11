@@ -4,6 +4,12 @@ import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
+import Search from "../components/search"
+
+const searchIndices = [
+  { name: `Pages`, title: `Pages`, hitComp: `PageHit` },
+  { name: `Posts`, title: `Blog Posts`, hitComp: `PostHit` },
+]
 
 class IndexPage extends Component {
   state = {
@@ -57,19 +63,22 @@ class IndexPage extends Component {
           }}
           onChange={e => this.queryHandler(e.target.value)}
         />
+        <Search collapse indices={searchIndices} />
         {filteredTasks.map(task => {
           return (
             <Link
               key={task.id}
               to={`/${task.data.slug}`}
-              style={{textDecoration: `none`, color: `gray`}}
+              style={{ textDecoration: `none`, color: `gray` }}
             >
-              <div  style={{
-                padding: `10px`,
-                border: `1px solid gray`,
-                marginBottom: `10px`,
-              }}>
-              {task.data.Name}
+              <div
+                style={{
+                  padding: `10px`,
+                  border: `1px solid gray`,
+                  marginBottom: `10px`,
+                }}
+              >
+                {task.data.Name}
               </div>
             </Link>
           )
