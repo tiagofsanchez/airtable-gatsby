@@ -1,15 +1,18 @@
 import React, { Component } from "react"
 import { Link, graphql } from "gatsby"
+import algoliasearch from "algoliasearch/lite"
+import { InstantSearch, SearchBox, Hits , Highlight} from "react-instantsearch-dom"
 
 import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
-import Search from "../components/search"
+import PageIndex from '../components/Search/PageIndex'
+import AlgPageIndex from "../components/Search/AlgPageIndex"
 
-const searchIndices = [
-  { name: `Pages`, title: `Pages`, hitComp: `PageHit` },
-  { name: `Posts`, title: `Blog Posts`, hitComp: `PostHit` },
-]
+const searchClient = algoliasearch(
+  "X32IDP6C7C",
+  "bd42b20b127c23898f0d0818db563b7e"
+)
 
 class IndexPage extends Component {
   state = {
@@ -51,6 +54,7 @@ class IndexPage extends Component {
         >
           <Image />
         </div>
+        <h3>My Search</h3>
         <input
           type="text"
           value={query}
@@ -63,26 +67,17 @@ class IndexPage extends Component {
           }}
           onChange={e => this.queryHandler(e.target.value)}
         />
-        <Search collapse indices={searchIndices} />
-        {filteredTasks.map(task => {
-          return (
-            <Link
-              key={task.id}
-              to={`/${task.data.slug}`}
-              style={{ textDecoration: `none`, color: `gray` }}
-            >
-              <div
-                style={{
-                  padding: `10px`,
-                  border: `1px solid gray`,
-                  marginBottom: `10px`,
-                }}
-              >
-                {task.data.Name}
-              </div>
-            </Link>
-          )
-        })}
+
+        {filteredTasks &&
+          filteredTasks.map(task => {
+            return <PageIndex task={task} key={task.id} />
+          })}
+          <hr />
+          <h3>Algolia Search</h3>
+        <InstantSearch searchClient={searchClient} indexName="Pages" >
+          <SearchBox />
+          <Hits hitComponent={AlgPageIndex}  />
+        </InstantSearch>
         <Link to="/page-2/">Go to page 2</Link>
       </Layout>
     )
